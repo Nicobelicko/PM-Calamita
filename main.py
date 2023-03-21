@@ -1,7 +1,5 @@
 from tkinter import *
-from tkinter import ttk
 from Class.Empresa import Empresa
-from tkinter import messagebox
 from tkinter.filedialog import askopenfile 
 import pandas as pd
 from pandastable import Table
