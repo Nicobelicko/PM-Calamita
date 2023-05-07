@@ -15,6 +15,7 @@ class Empresa:
     metricas = [] #[Inertia,Exactitud]
     data = pd.DataFrame()
     clusteringData = None #clusteringData tiene los resultados del modelo de CLustering (registro con su respectivo cluster)
+    idEmpresa = random
     min_max_scaler = MinMaxScaler()
     def __init__(self, nombreEmpresa, sectorEmpresa):
         '''Constructor de la clase empresa'''
