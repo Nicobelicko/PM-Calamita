@@ -1,7 +1,7 @@
 import tkinter
 import customtkinter
 from customtkinter import *
-#from Ventana_Perfilamiento import Ventana_Perfilamiento
+from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
 
 font_tuple1 = ("bold",30)
@@ -53,8 +53,7 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
         print("click en visualizar")
     
     def click_perfilamiento_empleados(self):
-
-        Ventana_Perfilamiento().mainloop()
+        Ventana_Perfilamiento()
 
 
     def click_editar_nomina(self):

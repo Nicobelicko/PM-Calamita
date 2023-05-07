@@ -17,16 +17,16 @@ font_tuple2 = ("Times New Roman",15)
 buttoncolor ="#45494f"
 file_path = None 
 
-class Ventana_Perfilamiento(customtkinter.CTk, tkinter.Tk):
+class Ventana_Perfilamiento(tkinter.Toplevel):
         
         def __init__(self):
             super().__init__() 
             matplotlib.use('TkAgg')
-            self.fotosapo = tkinter.PhotoImage(file='images/SaposiluetaBlanco.png')
-            self.MINIfotosapo = tkinter.PhotoImage(file='images/MINISaposiluetaBlanco.png')  
+            
             self.empresas = []
             self.title("Calamita")
-            
+            self.fotosapo = tkinter.PhotoImage(file='images/SaposiluetaBlanco.png')
+            self.MINIfotosapo = tkinter.PhotoImage(file='images/MINISaposiluetaBlanco.png')  
             self.iconphoto(False,self.fotosapo)
             self.geometry("600x512")
             self.configure(background="#23272a")
