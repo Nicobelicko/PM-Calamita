@@ -1,7 +1,7 @@
 import tkinter
 import customtkinter
 from customtkinter import *
-from CalamitaPage.Class.Ventana_Perfilamiento import Ventana_Perfilamiento
+#from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
 
 font_tuple1 = ("bold",30)
