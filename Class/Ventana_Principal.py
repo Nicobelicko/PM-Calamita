@@ -1,8 +1,9 @@
 import tkinter
 import customtkinter
 from customtkinter import *
+from CalamitaPage.Class.Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
-from Class.Ventana_Perfilamiento import Ventana_Perfilamiento
+
 font_tuple1 = ("bold",30)
 font_tuple2 = ("bold")
 customtkinter.set_appearance_mode("light")
@@ -52,7 +53,9 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
         print("click en visualizar")
     
     def click_perfilamiento_empleados(self):
-        print("click perfilamiento")
+
+        Ventana_Perfilamiento().mainloop()
+
 
     def click_editar_nomina(self):
         print("click editar nómina")
