@@ -1,7 +1,7 @@
 
 
 class Empleado:
-    listaEmpleados:  = []
+    listaEmpleados = []
     def __init__(self, nombreEmpleado, edadEmpleado, cargoEmpleado):
         self.idEmpleado = random.randrange(0000,9999)
         self.nombreEmpleado = nombreEmpleado
