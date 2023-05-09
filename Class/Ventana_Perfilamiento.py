@@ -34,21 +34,21 @@ class Ventana_Perfilamiento(tkinter.Toplevel):
             self.columnconfigure((0,2),weight=1)
 
             customtkinter.CTkButton(self, image=self.MINIfotosapo,text="",fg_color="#23272a",state="DISABLED").grid(column=1,row=2) #imagen sapo
-            customtkinter.CTkLabel(self,width=250,height=52,text="CALAMITA", fg_color="#23272a",text_color="#FFFFFF",text_font=font_tuple1).grid(column=1,row=3)
-            self.registrobutton=customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8,command=self.openNewWindow, text="Registro",fg_color=buttoncolor,text_font=font_tuple2)
+            customtkinter.CTkLabel(self,width=250,height=52,text="CALAMITA", fg_color="#23272a",text_color="#FFFFFF",font=font_tuple1).grid(column=1,row=3)
+            self.registrobutton=customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8,command=self.openNewWindow, text="Registro",fg_color=buttoncolor,font=font_tuple2)
             self.registrobutton.grid(column=0,row=1,pady=20)
-            customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8,command=self.helpWindow, text="Ayuda",fg_color=buttoncolor,text_font=font_tuple2).grid(column=2,row=4,pady=20)
-            self.upload_data = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.openFileExplorer,text="Subir datos",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8,command=self.helpWindow, text="Ayuda",fg_color=buttoncolor,font=font_tuple2).grid(column=2,row=4,pady=20)
+            self.upload_data = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.openFileExplorer,text="Subir datos",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.upload_data.grid(column=2,row=1,pady=20)
-            self.clustering = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.clusteringModel, text= "Perfilar base de datos",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            self.clustering = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.clusteringModel, text= "Perfilar base de datos",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.clustering.grid(column=0,row=2,pady=20)
-            self.predictive = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.predictiveModel, text= "Modelo predictivo",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            self.predictive = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.predictiveModel, text= "Modelo predictivo",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.predictive.grid(column=0,row=3,pady=20)
-            self.exportButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.exportModels, text= "Descargar bundle de modelos",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            self.exportButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.exportModels, text= "Descargar bundle de modelos",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.exportButton.grid(column=2,row=2,pady=20)
-            self.exportDataButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.exportData, text= "Exportar el perfilado a excel",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            self.exportDataButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.exportData, text= "Exportar el perfilado a excel",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.exportDataButton.grid(column=2,row=3,pady=20)
-            self.analisisButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.dataAnalysis,text="Analizar datos",state="DISABLED",fg_color=buttoncolor,text_font=font_tuple2)
+            self.analisisButton = customtkinter.CTkButton(self,width=250,height=52,border_width=0,corner_radius=8, command=self.dataAnalysis,text="Analizar datos",state="DISABLED",fg_color=buttoncolor,font=font_tuple2)
             self.analisisButton.grid(column=0,row=4,pady=20)
         
 
@@ -88,14 +88,14 @@ class Ventana_Perfilamiento(tkinter.Toplevel):
             newWindow.columnconfigure(0,weight=1)
             # A Label widget to show in toplevel
             customtkinter.CTkLabel(newWindow,
-                text ="Datos de la empresa",fg_color="#23272a",text_font=font_tuple1).grid(column=0, row=0, pady=20)
-            customtkinter.CTkLabel(newWindow,text="Nombre empresa",fg_color="#23272a",text_font=font_tuple2).grid(column=0, row=1, pady=20)
+                text ="Datos de la empresa",fg_color="#23272a",font=font_tuple1).grid(column=0, row=0, pady=20)
+            customtkinter.CTkLabel(newWindow,text="Nombre empresa",fg_color="#23272a",font=font_tuple2).grid(column=0, row=1, pady=20)
             nombre_empresa = customtkinter.CTkEntry(newWindow)
             nombre_empresa.grid(column=0, row=3, pady=5)
-            customtkinter.CTkLabel(newWindow,text="Sector empresa",fg_color="#23272a",text_font=font_tuple2).grid(column=0, row=4, pady=20)
+            customtkinter.CTkLabel(newWindow,text="Sector empresa",fg_color="#23272a",font=font_tuple2).grid(column=0, row=4, pady=20)
             sector_empresa = customtkinter.CTkEntry(newWindow)
             sector_empresa.grid(column=0, row=5, pady=5)
-            customtkinter.CTkButton(newWindow,width=230,height=52,border_width=0,corner_radius=8,fg_color=buttoncolor,text_font=font_tuple2,command=lambda: self.createEmpresa(nombre_empresa,sector_empresa),text="Enviar datos").grid(column=0, row=6, pady=50)
+            customtkinter.CTkButton(newWindow,width=230,height=52,border_width=0,corner_radius=8,fg_color=buttoncolor,font=font_tuple2,command=lambda: self.createEmpresa(nombre_empresa,sector_empresa),text="Enviar datos").grid(column=0, row=6, pady=50)
             
 
         #endregion
