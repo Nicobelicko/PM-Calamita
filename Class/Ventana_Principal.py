@@ -3,12 +3,13 @@ import customtkinter
 from customtkinter import *
 from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
+from Empleado import Empleado
 
 font_tuple1 = ("bold",30)
 font_tuple2 = ("bold",15)
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("blue")
-
+listaEmpleados = []
 
 class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
 
