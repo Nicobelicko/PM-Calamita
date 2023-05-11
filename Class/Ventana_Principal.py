@@ -5,6 +5,8 @@ from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
 from Empleado import Empleado
 import pandas as pd
+from pandastable import Table
+from Ventana_Agregar import Ventana_Agregar
 
 font_tuple1 = ("bold",30)
 font_tuple2 = ("bold",15)
@@ -54,14 +56,18 @@ class Ventana_Principal(tkinter.Toplevel):
 
 
     def click_visualizar(self):
-        print("click en visualizar")
+            f = customtkinter.CTkToplevel(self)
+            table = pt = Table(f, dataframe=self.listaEmpresas[0].listaEmpleados,
+                                        showtoolbar=True, showstatusbar=True)
+            pt.show()
     
     def click_perfilamiento_empleados(self):
         Ventana_Perfilamiento(self.listaEmpresas)
 
 
     def click_editar_nomina(self):
-        print("click editar nómina")
+        va = Ventana_Agregar(self.listaEmpresas)
+        va.mainloop()
 
     def hover_boton_visualizar(self, btn):
         self.boton_visualizar.configure(border_color="black")
