@@ -3,6 +3,10 @@ import customtkinter
 from customtkinter import *
 from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
+from Empleado import Empleado
+import pandas as pd
+from pandastable import Table
+from Ventana_Agregar import Ventana_Agregar
 
 font_tuple1 = ("bold",30)
 font_tuple2 = ("bold",15)
@@ -10,10 +14,12 @@ customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("blue")
 
 
-class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
 
-    def __init__(self):
+class Ventana_Principal(tkinter.Toplevel):
+
+    def __init__(self, lista):
         super().__init__()
+        self.listaEmpresas = lista
         self.geometry("600x512")
         self.title("Calamita")
         self.config(background="#EDF2FA")
@@ -38,8 +44,8 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
 
         self.boton_perfilamiento_empleados = customtkinter.CTkButton(self.sidebar_frame, command=self.click_perfilamiento_empleados,image=self.icono_button_perfilamiento,text="", font= font_tuple2, fg_color="#ffffff",border_width=5, border_color="#ffffff")
         self.boton_perfilamiento_empleados.grid(row=1, column=0, padx=20, pady=0)
-        self.boton_perfilamiento_empleados.bind('<Enter>',self.hover_boton_perfilar_empleados)
-        self.boton_perfilamiento_empleados.bind('<Leave>',self.leave_boton_perfilar_empleados)
+        #self.boton_perfilamiento_empleados.bind('<Enter>',self.hover_boton_perfilar_empleados)
+        #self.boton_perfilamiento_empleados.bind('<Leave>',self.leave_boton_perfilar_empleados)
 
         self.boton_editar_nomina = customtkinter.CTkButton(self.sidebar_frame, command=self.click_editar_nomina,image=self.icono_button_editar, text="", font= font_tuple2,fg_color="#ffffff",border_width=5, border_color="#ffffff")
         self.boton_editar_nomina.grid(row=2, column=0, padx=20, pady=0)
@@ -50,14 +56,18 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
 
 
     def click_visualizar(self):
-        print("click en visualizar")
+            f = customtkinter.CTkToplevel(self)
+            table = pt = Table(f, dataframe=self.listaEmpresas[0].listaEmpleados,
+                                        showtoolbar=True, showstatusbar=True)
+            pt.show()
     
     def click_perfilamiento_empleados(self):
-        Ventana_Perfilamiento()
+        Ventana_Perfilamiento(self.listaEmpresas)
 
 
     def click_editar_nomina(self):
-        print("click editar nómina")
+        va = Ventana_Agregar(self.listaEmpresas)
+        va.mainloop()
 
     def hover_boton_visualizar(self, btn):
         self.boton_visualizar.configure(border_color="black")
@@ -87,8 +97,30 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
         self.boton_editar_nomina.configure(border_color="#ffffff")
         self.boton_editar_nomina.configure(fg_color="#ffffff")
  
-       
+    def ventana_subir_datos(self):
+        newWindow = customtkinter.CTkToplevel(self)
+        newWindow.geometry("600x512")
+        newWindow.title("Subir datos")
+        newWindow.config(background="#EDF2FA")
 
+    def openFileExplorer(self):
+        filetypes = (
+            ('Excel','*.xlsx'),
+            ('CSV','*.csv')
+        )
+        file_path = askopenfile(mode='r', filetypes=filetypes)
+        if file_path is not None:
+            if file_path.name.endswith(".csv"):
+                listaEmpleados = pd.read_csv(file_path.name)
+            
+                messagebox.showinfo(message="Subida exitosa, archivo: "+file_path.name, title="Update")
+
+            elif file_path.name.endswith(".xlsx"):
+                listaEmpleados = pd.read_excel(file_path.name, sheet_name=0)
+                messagebox.showinfo(message="Subida exitosa, archivo: "+file_path.name, title="Update")
+               
+            else:
+                messagebox.showerror(message="Solo son validos formatos xlsx o csv", title="Warning")
 
 
 if __name__ == "__main__":
