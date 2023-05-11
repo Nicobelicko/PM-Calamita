@@ -38,9 +38,9 @@ class Empresa:
             data_return = self.data.describe()
             return data_return
         
-    def preparacionData(self,dataframe):
+    def preparacionData(self):
         '''Preparación de los datos'''
-        data = dataframe
+        data = self.listaEmpleados
         self.min_max_scaler.fit(data[['Sueldo',  'Hijos',  'Incapacidades',  'Antiguedad']]) #Ajuste de parámetro
         data[['Sueldo', 'Hijos',  'Incapacidades',  'Antiguedad']]= self.min_max_scaler.transform(data[['Sueldo',  'Hijos',  'Incapacidades',  'Antiguedad']])
         data['Casado']=data['Casado'].astype('category')

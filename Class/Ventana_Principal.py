@@ -10,14 +10,14 @@ font_tuple1 = ("bold",30)
 font_tuple2 = ("bold",15)
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("blue")
-listaEmpresas = []
+
 
 
 class Ventana_Principal(tkinter.Toplevel):
 
     def __init__(self, lista):
         super().__init__()
-        listaEmpresas = lista
+        self.listaEmpresas = lista
         self.geometry("600x512")
         self.title("Calamita")
         self.config(background="#EDF2FA")
@@ -42,8 +42,8 @@ class Ventana_Principal(tkinter.Toplevel):
 
         self.boton_perfilamiento_empleados = customtkinter.CTkButton(self.sidebar_frame, command=self.click_perfilamiento_empleados,image=self.icono_button_perfilamiento,text="", font= font_tuple2, fg_color="#ffffff",border_width=5, border_color="#ffffff")
         self.boton_perfilamiento_empleados.grid(row=1, column=0, padx=20, pady=0)
-        self.boton_perfilamiento_empleados.bind('<Enter>',self.hover_boton_perfilar_empleados)
-        self.boton_perfilamiento_empleados.bind('<Leave>',self.leave_boton_perfilar_empleados)
+        #self.boton_perfilamiento_empleados.bind('<Enter>',self.hover_boton_perfilar_empleados)
+        #self.boton_perfilamiento_empleados.bind('<Leave>',self.leave_boton_perfilar_empleados)
 
         self.boton_editar_nomina = customtkinter.CTkButton(self.sidebar_frame, command=self.click_editar_nomina,image=self.icono_button_editar, text="", font= font_tuple2,fg_color="#ffffff",border_width=5, border_color="#ffffff")
         self.boton_editar_nomina.grid(row=2, column=0, padx=20, pady=0)
@@ -57,7 +57,7 @@ class Ventana_Principal(tkinter.Toplevel):
         print("click en visualizar")
     
     def click_perfilamiento_empleados(self):
-        Ventana_Perfilamiento(listaEmpresas)
+        Ventana_Perfilamiento(self.listaEmpresas)
 
 
     def click_editar_nomina(self):
