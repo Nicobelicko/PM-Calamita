@@ -1,4 +1,4 @@
-
+import random
 
 class Empleado:
     listaEmpleados = []
@@ -8,6 +8,6 @@ class Empleado:
         self.edadEmpleado = edadEmpleado
         self.cargoEmpleado = cargoEmpleado
     
-    def agregarEmpleado(Empleado):
+    def agregarEmpleado(self, Empleado):
         self.listaEmpleados.append(Empleado)
 
