@@ -17,12 +17,13 @@ class Empresa:
     clusteringData = None #clusteringData tiene los resultados del modelo de CLustering (registro con su respectivo cluster)
     idEmpresa = random
     min_max_scaler = MinMaxScaler()
-    def __init__(self, nombreEmpresa, sectorEmpresa):
+    def __init__(self, nombreEmpresa, sectorEmpresa, lista):
         '''Constructor de la clase empresa'''
         self.idEmpresa = random.randrange(0000,9999)
         self.nombreEmpresa = nombreEmpresa
         self.sectorEmpresa = sectorEmpresa
         self.fechaCreacionUsuario = datetime.utcnow()
+        self.listaEmpleados = lista
     
     #def clusterDescription(self):
         #if len(self.models) >= 1:

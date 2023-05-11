@@ -16,13 +16,13 @@ font_tuple1 = ("Times New Roman",30)
 font_tuple2 = ("Times New Roman",15)
 buttoncolor ="#45494f"
 file_path = None 
-
+listaEmpresas = []
 class Ventana_Perfilamiento(tkinter.Toplevel):
         
-        def __init__(self):
+        def __init__(self, lista):
             super().__init__() 
             matplotlib.use('TkAgg')
-            
+            listaEmpresas = lista
             self.empresas = []
             self.title("Calamita")
             self.fotosapo = tkinter.PhotoImage(file='images/SaposiluetaBlanco.png')
@@ -63,7 +63,7 @@ class Ventana_Perfilamiento(tkinter.Toplevel):
             if name_obj != "" and sector_obj!= "":      
                 nombre_empresa.configure(state=DISABLED)
                 sector_empresa.configure(state=DISABLED)
-                self.empresas.append(Empresa(name_obj, sector_obj)) 
+                self.empresas.append(Empresa(name_obj, sector_obj, listaEmpleados)) 
                 messagebox.showinfo(message="Registro exitoso", title="Update")
                 self.upload_data.configure(state="normal")
                 #Habilitar botón en el self principal para upload data manejar un flujo permisivo con estados de botones

@@ -38,7 +38,7 @@ class Ventana_Agregar(customtkinter.CTk,tkinter.Tk):
             self.boton_agregar_empleado.grid(row=4,column=1,padx=3, pady=3,sticky="ew")
 
         def crearEmpleado(self,nombre_empleado,edad_empleado,cargo_empleado):
-            print("entra")
+            
             nombre_obj = nombre_empleado.get()
             edad_obj = edad_empleado.get()
             cargo_obj = cargo_empleado

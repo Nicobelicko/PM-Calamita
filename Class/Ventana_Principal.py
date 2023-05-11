@@ -4,17 +4,20 @@ from customtkinter import *
 from Ventana_Perfilamiento import Ventana_Perfilamiento
 from PIL import Image, ImageTk
 from Empleado import Empleado
+import pandas as pd
 
 font_tuple1 = ("bold",30)
 font_tuple2 = ("bold",15)
 customtkinter.set_appearance_mode("light")
 customtkinter.set_default_color_theme("blue")
-listaEmpleados = []
+listaEmpresas = []
 
-class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
 
-    def __init__(self):
+class Ventana_Principal(tkinter.Toplevel):
+
+    def __init__(self, lista):
         super().__init__()
+        listaEmpresas = lista
         self.geometry("600x512")
         self.title("Calamita")
         self.config(background="#EDF2FA")
@@ -54,7 +57,7 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
         print("click en visualizar")
     
     def click_perfilamiento_empleados(self):
-        Ventana_Perfilamiento()
+        Ventana_Perfilamiento(listaEmpresas)
 
 
     def click_editar_nomina(self):
@@ -88,8 +91,30 @@ class Ventana_Principal(customtkinter.CTk, tkinter.Tk):
         self.boton_editar_nomina.configure(border_color="#ffffff")
         self.boton_editar_nomina.configure(fg_color="#ffffff")
  
-       
+    def ventana_subir_datos(self):
+        newWindow = customtkinter.CTkToplevel(self)
+        newWindow.geometry("600x512")
+        newWindow.title("Subir datos")
+        newWindow.config(background="#EDF2FA")
 
+    def openFileExplorer(self):
+        filetypes = (
+            ('Excel','*.xlsx'),
+            ('CSV','*.csv')
+        )
+        file_path = askopenfile(mode='r', filetypes=filetypes)
+        if file_path is not None:
+            if file_path.name.endswith(".csv"):
+                listaEmpleados = pd.read_csv(file_path.name)
+            
+                messagebox.showinfo(message="Subida exitosa, archivo: "+file_path.name, title="Update")
+
+            elif file_path.name.endswith(".xlsx"):
+                listaEmpleados = pd.read_excel(file_path.name, sheet_name=0)
+                messagebox.showinfo(message="Subida exitosa, archivo: "+file_path.name, title="Update")
+               
+            else:
+                messagebox.showerror(message="Solo son validos formatos xlsx o csv", title="Warning")
 
 
 if __name__ == "__main__":
